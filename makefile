@@ -3,7 +3,7 @@ ifeq (${PREFIX},)
 endif
 
 beak: beak.c
-	${CC} $^ -o $@ -g -std=c99 -O3 -lm -lraylib -Wall -Wextra
+	${CC} $^ -o $@ -g -std=c99 -O3 -lm -lraylib -lpthread -Wall -Wextra
 
 install: beak
 	install -d ${PREFIX}/bin/

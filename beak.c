@@ -208,8 +208,8 @@ int main(int argc, char **argv) {
 
     clear_framebuffer(&log, framebuffer, background);
 
-    int target_x = 400;
-    int target_y = 300;
+    int target_x = window_width/2;
+    int target_y = window_height/2;
 
     float brush_radius = 10.0f;
 
@@ -258,7 +258,7 @@ int main(int argc, char **argv) {
         // again.
         if (log_top_dist > 1) {
             // Clear the log from selected -> top
-            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
                 for (size_t i = (log.selected + 1) % log.size; i != log.top; i = (i + 1) % log.size) {
                     UnloadImage(log.images[i]);
                 }
@@ -282,7 +282,7 @@ int main(int argc, char **argv) {
 
         // When the user releases the mouse we want to push a new entry
         // into the undo log.
-        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
+        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) || IsMouseButtonReleased(MOUSE_BUTTON_RIGHT)) {
             undo_log_push(&log, framebuffer);
         }
 

@@ -193,7 +193,7 @@ int main(int argc, char **argv) {
     }
 
     SetTraceLogLevel(LOG_ERROR);
-    SetConfigFlags(FLAG_VSYNC_HINT);
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
     InitWindow(window_width, window_height, "floating");
     HideCursor();
 
